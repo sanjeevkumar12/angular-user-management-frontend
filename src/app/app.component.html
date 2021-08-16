@@ -1,13 +1,8 @@
-<div class="container">
-  <h1>Install Bootstrap 5 in Angular 12 - codeplaners</h1>
-  <div class="card">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
+<header *ngIf="showHeader"  class="app-header fixed-top">
+  <app-header *ngIf="showHeader" fxLayout="column"></app-header>
+  <app-sidebar *ngIf="showSidebar" fxLayout="column" fxFlex="300px"></app-sidebar>
+</header>    
+<div class="content" fxLayout="column" fxFlex>
+  <router-outlet></router-outlet>
 </div>
+<app-footer *ngIf="showFooter" fxLayout="column"></app-footer>
