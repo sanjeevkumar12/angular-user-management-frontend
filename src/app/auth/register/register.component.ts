@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     if(this.form.valid){
       this.authService.register(this.f.email.value, this.f.password.value, this.f.confirm_password.value, this.f.first_name.value, this.f.last_name.value).subscribe((res) => {
+        this.router.navigate(['/login'])
       }, response => {
         if(response.status==422){
           this.handleSubmitError(response.error)
