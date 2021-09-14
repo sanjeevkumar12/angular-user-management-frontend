@@ -11,7 +11,7 @@ import { CoreModule } from './core/core.module';
 import { AuthService } from './core/services/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { HttpErrorInterceptor } from './core/interceptors/error.interceptor';
-
+import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -38,7 +38,8 @@ import { HttpErrorInterceptor } from './core/interceptors/error.interceptor';
       useClass: HttpErrorInterceptor,
       multi: true
   
-    }
+    },
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
