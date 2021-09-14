@@ -2,30 +2,78 @@
     <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
         <div class="d-flex flex-column align-content-end">
             <div class="app-auth-body mx-auto">	
-                <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon mr-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
+                <div class="app-auth-branding mb-4"><a class="app-logo" href="/"><img class="logo-icon mr-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
                 <h2 class="auth-heading text-center mb-4">Sign up to Portal</h2>					
 
                 <div class="auth-form-container text-left mx-auto">
                     <form [formGroup]="form" class="auth-form auth-signup-form">         
                         <div class="email mb-3">
                             <label class="sr-only" for="first_name">Your Name</label>
-                            <input formControlName="first_name" id="first_name" name="first_name" type="text" class="form-control first_name" placeholder="First name" required="required">
+                            <input formControlName="first_name" id="first_name" name="first_name" type="text" class="form-control first_name" 
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"
+                            placeholder="First name" required="required">
+
+                            <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback text-left">
+                                <div *ngIf="f.first_name.errors.required">First name is required</div>
+                                <div *ngIf="f.first_name.errors.server_error">{{f.first_name.errors.server_error}}</div>
+                              </div>
+
                         </div>
                         <div class="email mb-3">
                             <label class="sr-only" for="last_name">Your Name</label>
-                            <input formControlName="last_name" id="last_name" name="last_name" type="text" class="form-control last_name" placeholder="Last name" required="required">
+                            <input formControlName="last_name" id="last_name" name="last_name" type="text" class="form-control last_name" 
+                            [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"
+                            placeholder="Last name" required="required">
+                            
+                            <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback text-left">
+                                <div *ngIf="f.last_name.errors.required">Last name is required</div>
+                                <div *ngIf="f.last_name.errors.server_error"> sdas {{f.last_name.errors.server_error}}</div>
+                              </div>
+
+
                         </div>
                         <div class="email mb-3">
                             <label class="sr-only" for="email">Your Email</label>
-                            <input formControlName="email" id="email" name="email" type="email" class="form-control email" placeholder="Email" required="required">
+                            <input formControlName="email" id="email" name="email" type="email" class="form-control email"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                            placeholder="Email" required="required">
+
+
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback text-left">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.server_error">{{f.email.errors.server_error}}</div>
+                              </div>
+
                         </div>
                         <div class="password mb-3">
                             <label class="sr-only" for="password">Password</label>
-                            <input formControlName="password" id="password" name="password" type="password" class="form-control signup-password" placeholder="Create a password" required="required">
+                            <input formControlName="password" id="password" name="password" type="password" class="form-control signup-password" 
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                            placeholder="Create a password" required="required">
+
+
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback text-left">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                <div *ngIf="f.password.errors.server_error"> {{f.password.errors.server_error}}</div>
+                              </div>
+
+
                         </div>
                         <div class="password mb-3">
                             <label class="sr-only" for="confirm_password">Password</label>
-                            <input formControlName="confirm_password" id="confirm_password" name="confirm_password" type="password" class="form-control confirm_password" placeholder="Confirm password" required="required">
+                            <input formControlName="confirm_password" id="confirm_password" name="confirm_password" type="password" class="form-control confirm_password" 
+                            
+                            [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }"
+                            
+                            placeholder="Confirm password" required="required">
+
+
+                            <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback text-left">
+                                <div *ngIf="f.confirm_password.errors.required">Confirm password is required</div>
+                                <div *ngIf="f.confirm_password.errors.server_error">{{f.confirm_password.errors.server_error}}</div>
+                              </div>
+
                         </div>
                         <div class="extra mb-3">
                             <div class="form-check">

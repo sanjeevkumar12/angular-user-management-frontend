@@ -14,17 +14,19 @@ export class RegisterComponent implements OnInit {
 
   form : FormGroup;
   authError: string|null = null;
+  submitted: boolean = false;
 
   constructor(private renderer: Renderer2, private authService : AuthService,private formBuilder: FormBuilder,
               private tokenService: TokenStorageService, private router: Router
               ) { 
     this.renderer.addClass(document.body, 'app-login');
     this.renderer.addClass(document.body,'p-0')
+    const PAT_NAME = "^[a-zA-Z ]{2,20}$";
     this.form = this.formBuilder.group({
       email: ['', Validators.email],
-      password: [''],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirm_password: [''],
-      first_name: [''],
+      first_name: ['',[Validators.required, Validators.pattern(PAT_NAME)]],
       last_name: [''],
     });
   }
@@ -34,17 +36,29 @@ export class RegisterComponent implements OnInit {
   get f() { return this.form.controls; }
 
   register(){
+    this.submitted = true;
     if(this.form.valid){
       this.authService.register(this.f.email.value, this.f.password.value, this.f.confirm_password.value, this.f.first_name.value, this.f.last_name.value).subscribe((res) => {
-        //this.tokenService.saveToken(res.token)
-        //this.tokenService.saveUser(res.user)
-        //this.router.navigate(['/'])
       }, response => {
         if(response.status==422){
-          this.authError = response.error.errors.auth_error;
+          this.handleSubmitError(response.error)
         }
       });
     }
   }
+
+  protected handleSubmitError(error: any) {
+        const validationErrors = error.errors;
+        console.log(validationErrors)
+          Object.keys(validationErrors).forEach(prop => {
+            const formControl = this.form.get(prop);
+            if (formControl) {
+              formControl.setErrors({
+                server_error: validationErrors[prop]
+              });
+            }
+          });
+    }
+  
 
 }
