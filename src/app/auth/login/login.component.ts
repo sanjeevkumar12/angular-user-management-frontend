@@ -1,4 +1,5 @@
-import { Component, OnInit , Renderer2} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit , Renderer2} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
@@ -9,19 +10,19 @@ import { TokenStorageService } from '../../core/services/token-storage.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   form : FormGroup;
   authError: string|null = null;
 
-  constructor(private renderer: Renderer2, private authService : AuthService,private formBuilder: FormBuilder,
+  constructor(@Inject(DOCUMENT) private document: any, private authService : AuthService,private formBuilder: FormBuilder,
               private tokenService: TokenStorageService, private router: Router
               ) { 
-    this.renderer.addClass(document.body, 'app-login');
-    this.renderer.addClass(document.body,'p-0')
-    this.form = this.formBuilder.group({
-      email: ['', Validators.email],
-      password: ['']
+                this.document.body.classList.add('app-login');
+                this.document.body.classList.add('p-0')
+                this.form = this.formBuilder.group({
+                email: ['', Validators.email],
+                password: ['']
     });
   }
 
@@ -43,6 +44,10 @@ export class LoginComponent implements OnInit {
         }
       });
     }
+  }
+  ngOnDestroy(){
+    this.document.body.classList.remove('app-login');
+    this.document.body.classList.remove('p-0')
   }
 
 }

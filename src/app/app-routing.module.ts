@@ -14,7 +14,11 @@ const routes: Routes = [
     }
   },
   {path: 'login', component: LoginComponent, data: { showHeader: false, showSidebar: false, showFooter : false}},
-  {path: 'register', component: RegisterComponent, data: { showHeader: false, showSidebar: false, showFooter : false}}
+  {path: 'register', component: RegisterComponent, data: { showHeader: false, showSidebar: false, showFooter : false}},
+  { path: 'auth',  loadChildren: () =>  import('./auth/auth.module').then(m => m.AuthModule),
+    data: { showHeader: false, showSidebar: false , showFooter : false
+    }
+  },
 ];
 
 @NgModule({

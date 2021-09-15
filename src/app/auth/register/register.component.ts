@@ -1,4 +1,5 @@
-import { Component, OnInit , Renderer2} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit , Renderer2} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
@@ -10,17 +11,17 @@ import { TokenStorageService } from '../../core/services/token-storage.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit , OnDestroy{
 
   form : FormGroup;
   authError: string|null = null;
   submitted: boolean = false;
 
-  constructor(private renderer: Renderer2, private authService : AuthService,private formBuilder: FormBuilder,
+  constructor(@Inject(DOCUMENT) private document: any, private authService : AuthService,private formBuilder: FormBuilder,
               private tokenService: TokenStorageService, private router: Router
               ) { 
-    this.renderer.addClass(document.body, 'app-login');
-    this.renderer.addClass(document.body,'p-0')
+                this.document.body.classList.add('app-login');
+                this.document.body.classList.add('p-0')
     const PAT_NAME = "^[a-zA-Z ]{2,20}$";
     this.form = this.formBuilder.group({
       email: ['', Validators.email],
@@ -59,6 +60,11 @@ export class RegisterComponent implements OnInit {
               });
             }
           });
+    }
+
+    ngOnDestroy(){
+      this.document.body.classList.remove('app-login');
+      this.document.body.classList.remove('p-0')
     }
   
 

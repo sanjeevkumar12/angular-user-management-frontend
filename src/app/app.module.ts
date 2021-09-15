@@ -19,13 +19,13 @@ import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
-    AuthModule,
-    AppRoutingModule,
+    AuthModule,    
     LayoutModule,
     DashboardModule,
 

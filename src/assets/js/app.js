@@ -49,20 +49,19 @@ function responsiveSidePanel() {
 	}
 };
 
-sidePanelToggler.addEventListener('click', () => {
-	if (sidePanel.classList.contains('sidepanel-visible')) {
-		console.log('visible');
-		sidePanel.classList.remove('sidepanel-visible');
-		sidePanel.classList.add('sidepanel-hidden');
-		
-	} else {
-		console.log('hidden');
-		sidePanel.classList.remove('sidepanel-hidden');
-		sidePanel.classList.add('sidepanel-visible');
-	}
-});
-
-
+if(sidePanelToggler){
+	sidePanelToggler.addEventListener('click', () => {
+		if (sidePanel.classList.contains('sidepanel-visible')) {
+			console.log('visible');
+			sidePanel.classList.remove('sidepanel-visible');
+			sidePanel.classList.add('sidepanel-hidden');
+			
+		} else {
+			console.log('hidden');
+			sidePanel.classList.remove('sidepanel-hidden');
+			sidePanel.classList.add('sidepanel-visible');
+		}
+	});
 
 sidePanelClose.addEventListener('click', (e) => {
 	e.preventDefault();
@@ -72,6 +71,13 @@ sidePanelClose.addEventListener('click', (e) => {
 sidePanelDrop.addEventListener('click', (e) => {
 	sidePanelToggler.click();
 });
+
+
+}
+
+
+
+
 
 
 
