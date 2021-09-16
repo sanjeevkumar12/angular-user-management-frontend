@@ -12,11 +12,13 @@ import { AuthService } from './core/services/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { HttpErrorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
+import { NotfoundComponent } from './core/components/notfound/notfound.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotfoundComponent
   ],
   imports: [
     AppRoutingModule,
@@ -28,8 +30,6 @@ import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
     AuthModule,    
     LayoutModule,
     DashboardModule,
-
-
   ],
   providers: [AuthService,
     {

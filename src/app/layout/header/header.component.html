@@ -19,7 +19,8 @@
             </form>
             </div><!--//app-search-box-->
             
-            <div class="app-utilities col-auto">
+            <div *ngIf="isAuthenticated$ | async" class="app-utilities col-auto">
+              {{user}}
               <div class="app-utility-item app-notifications-dropdown dropdown">    
                 <a class="dropdown-toggle no-toggle-arrow" id="notifications-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" title="Notifications">
                   <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -124,7 +125,7 @@
             <li><a class="dropdown-item" href="account.html">Account</a></li>
             <li><a class="dropdown-item" href="settings.html">Settings</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="login.html">Log Out</a></li>
+            <li><a class="dropdown-item" (click)="logout()" href="#">Log Out</a></li>
           </ul>
               </div><!--//app-user-dropdown--> 
             </div><!--//app-utilities-->
