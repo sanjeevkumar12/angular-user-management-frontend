@@ -9,13 +9,12 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { ForgotPasswordResetComponent } from './forgot-password-reset/forgot-password-reset.component';
 
 
-
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    ForgotPasswordResetComponent
+    ForgotPasswordResetComponent,
   ],
   imports: [
     CommonModule,
