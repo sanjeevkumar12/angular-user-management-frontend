@@ -2,14 +2,14 @@ import { Component, Type, ComponentFactoryResolver, ViewChild, OnDestroy, Compon
 import { InsertionDirective } from './insertion.directive';
 import { Subject } from 'rxjs';
 import { DialogRef } from './dialog-ref';
-import { dialogAnimation } from '../animations/dialog.animation';
+import { dialogAnimation, fadeInGrow } from '../animations/dialog.animation';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css'],
   animations: [
-    dialogAnimation
+    dialogAnimation, fadeInGrow
   ]
 })
 export class DialogComponent implements AfterViewInit, OnDestroy {
