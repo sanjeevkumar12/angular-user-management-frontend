@@ -1,20 +1,19 @@
-import { Component, Type, ComponentFactoryResolver, ViewChild, OnDestroy, ComponentRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Type, ComponentFactoryResolver, ViewChild, OnDestroy, HostBinding, ComponentRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { InsertionDirective } from './insertion.directive';
 import { Subject } from 'rxjs';
 import { DialogRef } from './dialog-ref';
-import { dialogAnimation, fadeInGrow } from '../animations/dialog.animation';
+import { dialogAnimation, fadeInGrow , boxAnimation} from '../animations/dialog.animation';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css'],
-  animations: [
-    dialogAnimation, fadeInGrow
-  ]
+  animations:boxAnimation
 })
 export class DialogComponent implements AfterViewInit, OnDestroy {
   componentRef!: ComponentRef<any>;
-
+  @HostBinding('@host') host!: any;
+  
   @ViewChild(InsertionDirective)
   insertionPoint!: InsertionDirective;
 

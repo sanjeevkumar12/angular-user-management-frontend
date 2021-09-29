@@ -10,9 +10,10 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 export class DashboardComponent implements OnInit {
 
   constructor(public dialogService: DialogService) { 
-    const dialog = this.dialogService.open(ChangePasswordComponent,{}).afterClosed.subscribe(result => {
-      console.log('Dialog closed', result);
-    });
+    // const dialog = this.dialogService.open(ChangePasswordComponent,{}).afterClosed.subscribe(result => {
+    //   console.log('Dialog closed', result);
+    // });
+    this.dialogService.alert('Hello' , 'Sanjeev');
   }
 
   ngOnInit(): void {

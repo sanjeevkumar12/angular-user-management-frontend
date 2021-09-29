@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertDialogModel } from '../dialog-config';
+import { DialogConfig } from '../dialog-config';
 import { DialogRef } from '../dialog-ref';
 
 @Component({
@@ -9,12 +9,12 @@ import { DialogRef } from '../dialog-ref';
 })
 export class AlertComponent implements OnInit {
 
-  constructor(public config: AlertDialogModel, public dialog: DialogRef) { }
+  constructor(public config: DialogConfig, public dialog: DialogRef) { }
 
   ngOnInit(): void {
   }
 
   onClose() {
-    this.dialog.close('some value');
+    this.dialog.close(true);
   }
 }

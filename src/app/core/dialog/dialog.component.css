@@ -17,6 +17,7 @@
   background-color: white;
   width: 50%;
   height: 50%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   padding: 8px;

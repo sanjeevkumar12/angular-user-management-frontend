@@ -4,6 +4,7 @@ import { DialogInjector } from './dialog-injector';
 import { DialogConfig } from './dialog-config';
 import { DialogRef } from './dialog-ref';
 import { CoreModule } from '../core.module';
+import { AlertComponent } from './alert/alert.component';
 
 @Injectable({
   providedIn: CoreModule
@@ -53,5 +54,13 @@ export class DialogService {
   private removeDialogComponentFromBody() {
     this.appRef.detachView(this.dialogComponentRef.hostView);
     this.dialogComponentRef.destroy();
+  }
+
+  alert(title: string, message: string, callback?: CallableFunction){    
+      this.open(AlertComponent,{title, message}).afterClosed.subscribe(result => {
+        if(callback){
+          callback(result)
+        }
+      });
   }
 }

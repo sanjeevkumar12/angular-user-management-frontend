@@ -1,5 +1,5 @@
-<div class="overlay" (click)="onOverlayClicked($event)">
-  <div [@dialog] class="modal" (click)="onDialogClicked($event)" tabindex="-1">
+<div class="overlay" [@backdrop] (click)="onOverlayClicked($event)">
+  <div [@box] (click)="onDialogClicked($event)" tabindex="-1">
     <ng-template appInsertion>
       
     </ng-template>
