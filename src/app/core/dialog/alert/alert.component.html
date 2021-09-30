@@ -6,28 +6,25 @@
           
           <div class="main-content text-center">
               
-            <button type="button"  class="btn close-btn" data-dismiss="modal" aria-label="Close">
+            <button type="button" (click)='onClose()' class="btn close-btn" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><span class="material-icons">close</span></span>
             </button>
             
 
-              <div class="warp-icon mb-5">
+              <div class="warp-icon mb-4">
                 <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><span class="material-icons">info</span></span>
                 </button>
               </div>
              
-                <p class="mb-4 mt-2">{{config.message}}</p>
-                <p class="mb-4 mt-2">&nbsp;</p>
-                <div class="d-flex mt-4">
+                <p class="mb-4">{{config.message}}</p>
+            
+                <div class="d-flex">
                   <div class="mx-auto">
                     <button type="button" class="btn btn-primary " (click)='onClose()'>OK</button>
                   </div>
                 </div>
-             
-            
           </div>
-
         </div>
       </div>
     </div>

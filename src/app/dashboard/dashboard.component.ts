@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
     // const dialog = this.dialogService.open(ChangePasswordComponent,{}).afterClosed.subscribe(result => {
     //   console.log('Dialog closed', result);
     // });
-    this.dialogService.alert('Hello' , 'Sanjeev');
+    this.dialogService.alert('Hello' , 'This is the message which will be displayed in dialog');
   }
 
   ngOnInit(): void {
