@@ -58,5 +58,8 @@ export class AuthService {
   logout(){
     this.tokenStorage.signOut()
   }
+  change_password(current_password: string, new_password: string, confirm_password: string){
+    return this.http.post(`${environment.apiUrl}/api/v1/auth/change-password`, {current_password, new_password, confirm_password});
+  }
 
 }

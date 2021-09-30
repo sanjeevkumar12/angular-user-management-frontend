@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { HttpErrorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
 import { NotfoundComponent } from './core/components/notfound/notfound.component';
+import { DialogModule } from './dialog/dialog.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NotfoundComponent } from './core/components/notfound/notfound.component
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
+    DialogModule,
     AuthModule,    
     LayoutModule,
     DashboardModule,
