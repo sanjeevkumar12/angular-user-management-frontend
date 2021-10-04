@@ -10,13 +10,18 @@ export class DialogContext<D = any> {
     message?: string;
     size?: DialogSize; 
     save_btn_label?: string = 'Save';
-
-    // size_class(){
-    //   return this.size ? `dialog-${this.size}` : ''
-    // }
-
-    // position_class(){
-    //   return this.position ? `dialog-${this.position}` : ''
-    // }
   }
   
+  export type MessageBoxType = 'alert' | 'confirm';
+
+
+export class MessageBoxContext{
+    data?:DialogContext;
+    classes?:string;
+    type?:MessageBoxType
+    title!: string;
+    message!: string;
+    okBtnText!:string
+    acceptBtnText!:string;
+    rejectBtnText!:string;
+}

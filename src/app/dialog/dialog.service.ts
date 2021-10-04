@@ -6,9 +6,11 @@ import {
   EmbeddedViewRef,
   ComponentRef,
   Type,
+  ViewContainerRef,
 } from '@angular/core'
 import { DialogComponent } from './dialog.component'
-import { DialogContext } from './dialog-config';
+import { MessageBoxComponent } from './message-box/message-box.component';
+import { DialogContext, MessageBoxContext } from './dialog-config';
 import { DialogRef } from './dialog-ref';
 import { DialogInjector } from '../dialog/dialog-injector';
 import {DialogModule} from './dialog.module'
@@ -60,4 +62,45 @@ export class DialogService {
     this.appRef.detachView(dialogComponentRef.hostView);
     dialogComponentRef.destroy();
   }
+
+  confirm(title: string, message: string, acceptBtnText: string = 'Accept',rejectBtnText: string = 'Reject' ,acceptFn?: (argument: () => boolean) => void,  rejectFn?: (argument: () => boolean) => void){
+    const map = new WeakMap();
+    map.set(MessageBoxContext, {title, message, acceptBtnText, rejectBtnText, type: 'confirm'});
+    const dialogRef = new DialogRef();
+    map.set(DialogRef, dialogRef);    
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MessageBoxComponent)
+    const componentRef = componentFactory.create(new DialogInjector(this.injector, map));
+    this.appRef.attachView(componentRef.hostView);
+    const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+    document.body.appendChild(domElem);
+    dialogRef.afterClosed.subscribe((result)=>{
+      if(result && acceptFn){
+        acceptFn(result);
+      }
+      else if(!result && rejectFn){
+        rejectFn(result);
+      }     
+    })
+    return dialogRef;
+  }
+
+  alert(title: string, message: string, okBtnText: string = 'OK', acceptFn?: (argument: () => boolean) => void){
+    const map = new WeakMap();
+    map.set(MessageBoxContext, {title, message, okBtnText, type: 'confirm'});
+    const dialogRef = new DialogRef();
+    map.set(DialogRef, dialogRef);    
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MessageBoxComponent)
+    const componentRef = componentFactory.create(new DialogInjector(this.injector, map));
+    this.appRef.attachView(componentRef.hostView);
+    const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+    document.body.appendChild(domElem);
+    dialogRef.afterClosed.subscribe((result)=>{
+      if(acceptFn){
+        acceptFn(result);
+      }      
+    })
+    return dialogRef;
+  }
+
+
 }

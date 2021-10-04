@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
     // const dialog = this.dialogService.open(ChangePasswordComponent,{}).afterClosed.subscribe(result => {
     //   console.log('Dialog closed', result);
     // });
-    this.dialogService.open(ChangePasswordComponent , {title: 'Change Password', save_btn_label: 'Save'});
+    this.dialogService.confirm('Change Password', 'Save');
   }
 
   ngOnInit(): void {
