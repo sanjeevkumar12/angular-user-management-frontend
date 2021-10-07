@@ -15,6 +15,7 @@ import { HttpErrorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptorProviders } from './core/interceptors/auth.interceptor';
 import { NotfoundComponent } from './core/components/notfound/notfound.component';
 import { DialogModule } from './dialog/dialog.module';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { DialogModule } from './dialog/dialog.module';
     AuthModule,    
     LayoutModule,
     DashboardModule,
+    AdminModule
   ],
   providers: [AuthService,
     {

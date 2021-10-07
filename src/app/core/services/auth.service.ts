@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
-import { User } from 'src/app/models/user.model';
+import { User } from '../../models/user.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({

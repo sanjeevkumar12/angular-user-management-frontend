@@ -31,17 +31,11 @@ export class DialogService {
   private appendDialogComponentToBody(config: DialogContext,componentType: Type<any>) {
     const map = new WeakMap();
     map.set(DialogContext, config);
-
     const dialogRef = new DialogRef();
     map.set(DialogRef, dialogRef);
-
-    
-
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DialogComponent);
     const componentRef = componentFactory.create(new DialogInjector(this.injector, map));
-
     this.appRef.attachView(componentRef.hostView);
-
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
     componentRef.instance.childComponentType = componentType;
@@ -54,7 +48,6 @@ export class DialogService {
       this.removeDialogComponentFromBody(componentRef);
       sub.unsubscribe();
     });
-
     return dialogRef;
   }
 
