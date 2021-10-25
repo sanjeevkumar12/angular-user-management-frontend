@@ -11653,7 +11653,8 @@ button.close:focus {
 }
 
 .app-wrapper {
-	transition: all .4s ease-in-out
+	transition: all .4s ease-in-out;
+	min-height: 80vh;
 }
 
 @media(prefers-reduced-motion: reduce) {
@@ -12311,6 +12312,7 @@ button.close:focus {
 .app-auth-footer .copyright {
 	font-size: .75rem
 }
+
 
 @media(max-width: 767.98px) {
 	.auth-background-col {

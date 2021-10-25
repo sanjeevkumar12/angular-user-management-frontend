@@ -7,6 +7,7 @@ import { AddDoctorComponent } from './doctors/add-doctor/add-doctor.component';
 import { EditDoctorComponent } from './doctors/edit-doctor/edit-doctor.component';
 import { ListDoctorsComponent } from './doctors/list-doctors/list-doctors.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

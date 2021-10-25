@@ -17,4 +17,11 @@ export class DoctorService {
        return res
       }));
   }
+  createDoc(data: any) {
+    console.log(data)
+    return this.http.post<any>(`${DOCTOR_ENDPOINT}`, data)
+      .pipe(map(res => {
+       return res
+      }));
+  }
 }

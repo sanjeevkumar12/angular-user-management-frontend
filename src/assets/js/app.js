@@ -19,10 +19,10 @@ alertList.forEach(function (alert) {
 
 
 /* ===== Responsive Sidepanel ====== */
-const sidePanelToggler = document.getElementById('sidepanel-toggler'); 
-const sidePanel = document.getElementById('app-sidepanel');  
-const sidePanelDrop = document.getElementById('sidepanel-drop'); 
-const sidePanelClose = document.getElementById('sidepanel-close'); 
+const sidePanelToggler = document.querySelectorAll('#sidepanel-toggler'); 
+const sidePanel = document.querySelectorAll('#app-sidepanel');  
+const sidePanelDrop = document.querySelectorAll('#sidepanel-drop'); 
+const sidePanelClose = document.querySelectorAll('#sidepanel-close'); 
 
 window.addEventListener('load', function(){
 	responsiveSidePanel(); 

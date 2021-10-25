@@ -10,13 +10,11 @@ const routes: Routes = [
     'path' : '' , component: DashboardComponent
   },
   {
-    path: 'doctors' , component : ListDoctorsComponent
-  },
-  {
-    path: 'doctors/add' , component : AddDoctorComponent
-  },
-  {
-    path: 'doctors/edit/:slug' , component : EditDoctorComponent
+    path: 'doctors', component: ListDoctorsComponent,
+    children: [
+      { path: 'add', component: AddDoctorComponent },
+      { path: 'edit/:id', component: EditDoctorComponent }
+    ]
   }
 ];
 
